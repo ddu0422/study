@@ -1,0 +1,14 @@
+javax:
+  persistence:
+    jdbc:
+      driver: org.h2.Driver
+      user: sa
+      password:
+      url: jdbc:h2:tcp://localhost/~/test
+
+hibernate:
+  dialect: org.hiberate.dialect.H2Dialect
+  show_sql: true
+  use_sql_comments: true
+  id:
+    new_generator_mappings: true
