@@ -22,12 +22,12 @@
 ```
 account
 ㄴ adapter
-    ㄴ in
-      ㄴ AccountController
-    ㄴ out
-      ㄴ persistence
-        ㄴ AccountPersistenceAdapter
-        ㄴ SpringDataAccountRepository
+  ㄴ in
+    ㄴ AccountController
+  ㄴ out
+    ㄴ persistence
+      ㄴ AccountPersistenceAdapter
+      ㄴ SpringDataAccountRepository
 ㄴ application
   ㄴ port
     ㄴ in
@@ -85,7 +85,22 @@ account
   }
 
   /*
+  실행 결과
+
   name: must not be null
   jakarta.validation.ConstraintViolationException: name: must not be null
   */
   ```
+
+# 유스케이스마다 다른 출력 모델
+
+- 입력과 비슷하게 출력도 각 유스케이스에 맞게 구체적일 것. (호출자에게 필요한 데이터만)
+- 유스케이스들 간에 같은 출력 모델을 공유하게 되면 유스케이스들도 강하게 결합된다.
+  - 공유 모델은 장기적으로 봤을 때 갖가지 이유로 커지게 되어있다.
+  - 도메인 엔티티를 출력 모델로 사용하지 않아야한다.
+
+# 읽기 전용 유스케이스
+
+- 인커밍 전용 포트를 만들고 쿼리 서비스에 구현하는 것
+- 읽기 전용 쿼리는 쓰기가 가능한 유스케이스와 코드 상에서 명확하게 구분
+  - CQS(Command-Query Separation)와 CQRS(Command-Query Responsibility Segregation) 개념과 잘 맞는다.
